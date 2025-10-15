@@ -46,6 +46,9 @@ html, body {
   overflow: auto; /* hide while loading; JS will restore for main page */
   cursor: none;
 }
+button,a{
+  cursor: none;
+}
 .trail-cursor{
   position: fixed;
   top: 0;
