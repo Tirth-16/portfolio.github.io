@@ -408,7 +408,7 @@ iframe {
   font-size: 0.95rem;
   color: var(--muted);
   font-weight: 500;
-  cursor: pointer;
+  cursor: none;
   padding: 6px 12px;
   border-radius: var(--radius);
   transition: color 0.25s, background 0.25s;

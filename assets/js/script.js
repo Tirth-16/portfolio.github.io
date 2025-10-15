@@ -61,3 +61,9 @@ window.addEventListener("DOMContentLoaded", () => {
     el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
   });
 });
+window.addEventListener("click", () => {
+  const cursor = document.querySelector(".trail-cursor");
+  cursor.classList.add("hover");
+  setTimeout(() => cursor.classList.remove("hover"), 150);
+});
+
