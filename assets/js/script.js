@@ -12,32 +12,39 @@ window.addEventListener("load", () => {
 });
 
 // ===========================
-// Navbar Page Switching
+// DOM Ready: Navbar + Cursor
 // ===========================
-const navLinks = document.querySelectorAll("[data-nav-link]");
+window.addEventListener("DOMContentLoaded", () => {
+  // ===========================
+  // Navbar Page Switching
+  // ===========================
+ const navLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("article[data-page]");
 
 navLinks.forEach(link => {
   link.addEventListener("click", () => {
-    const targetPage = link.textContent.trim().toLowerCase();
+    const targetPage = link.getAttribute("data-target").trim();
 
+    // remove active from everything
     navLinks.forEach(l => l.classList.remove("active"));
     pages.forEach(page => page.classList.remove("active"));
 
+    // activate clicked link
     link.classList.add("active");
 
-    pages.forEach(page => {
-      if (page.dataset.page === targetPage) {
-        page.classList.add("active");
-      }
-    });
+    // show matched page
+    const pageToShow = document.querySelector(`article[data-page="${targetPage}"]`);
+    if (pageToShow) {
+      pageToShow.classList.add("active");
+    } else {
+      console.error(`❌ No article found for data-page="${targetPage}"`);
+    }
   });
 });
 
-// ===========================
-// Magic Cursor
-// ===========================
-window.addEventListener("DOMContentLoaded", () => {
+  // ===========================
+  // Magic Cursor
+  // ===========================
   const cursor = document.querySelector(".trail-cursor");
   let mouseX = 0, mouseY = 0;
   let cursorX = 0, cursorY = 0;
@@ -60,10 +67,18 @@ window.addEventListener("DOMContentLoaded", () => {
     el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
     el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
   });
+
+  // remove default hand cursor
+  document.querySelectorAll("a, button").forEach(el => {
+    el.style.cursor = "none";
+  });
 });
+
+// ===========================
+// Click Effect on Cursor
+// ===========================
 window.addEventListener("click", () => {
   const cursor = document.querySelector(".trail-cursor");
   cursor.classList.add("hover");
   setTimeout(() => cursor.classList.remove("hover"), 150);
 });
-
