@@ -44,6 +44,26 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden; /* hide while loading; JS will restore for main page */
+  cursor: none
+}
+.trail-cursor{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background:rgba(255, 183, 66, 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%,-50%);
+  z-index:9999;
+  box-shadow: 0 0 15px rgba(255, 183,66, 0.7);
+  transition: transform 0.1s ease-out;
+}
+a:hover ~ .trail-cursor,
+button:hover ~ .trail-cursor{
+  transform: translate(-50%,-50%)scale(1.0);
+  background: rgba(255, 183, 66, 1);
 }
 
 img {
@@ -164,8 +184,8 @@ img {
   flex: 1;
   margin-left: var(--sidebar-width);
   padding: 28px;
-  min-height: 100vh;
-  overflow-y: auto;
+  height: 100vh;
+  overflow-y: auto; 
 }
 
 /* small helper: page articles */
@@ -265,8 +285,9 @@ iframe {
 
 /* the hidden extra info */
 .sidebar-info_more {
-  margin-top: 18px;
-  display: none; /* toggled by JS */
+  display: block;
+  max-height: none;
+  opacity: 1; /* toggled by JS */
 }
 
 .separator {
@@ -370,7 +391,7 @@ iframe {
   padding: 0;
 }
 
-.navbar-item {
+.navbar-item {  
 }
 
 .navbar-link {
@@ -402,6 +423,12 @@ iframe {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--text-primary);
+}
+article{
+  display: none;
+}
+article.active{
+  display: block;
 }
 
 /* TIMELINE (Education & Experience) */
