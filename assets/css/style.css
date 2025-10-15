@@ -43,8 +43,8 @@ html, body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden; /* hide while loading; JS will restore for main page */
-  cursor: none
+  overflow: auto; /* hide while loading; JS will restore for main page */
+  cursor: none;
 }
 .trail-cursor{
   position: fixed;
@@ -58,14 +58,13 @@ html, body {
   transform: translate(-50%,-50%);
   z-index:9999;
   box-shadow: 0 0 15px rgba(255, 183,66, 0.7);
-  transition: transform 0.1s ease-out;
+  transition: transform 0.1s ease, background 0.15s ease;
 }
-a:hover ~ .trail-cursor,
-button:hover ~ .trail-cursor{
-  transform: translate(-50%,-50%)scale(1.0);
-  background: rgba(255, 183, 66, 1);
+.trail-cursor.hover{
+  transform: translate(-50%,-50%)scale(1.8);
+  background: rgba(255,183 , 66, 1);
+  box-shadow: 0 0 20px rgba(255, 183, 66, 1);
 }
-
 img {
   max-width: 100%;
   display: block;
