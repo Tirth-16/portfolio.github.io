@@ -36,11 +36,10 @@ navLinks.forEach(link => {
     const pageToShow = document.querySelector(`article[data-page="${targetPage}"]`);
     if (pageToShow) {
       pageToShow.classList.add("active");
-    } else {
-      console.error(`❌ No article found for data-page="${targetPage}"`);
-    }
+    } 
   });
 });
+
 
   // ===========================
   // Magic Cursor

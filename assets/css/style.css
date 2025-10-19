@@ -191,8 +191,8 @@ img {
 .main-content {
   flex: 1;
   margin-left: var(--sidebar-width);
-  padding: 28px;
-  height: 100vh;
+  padding:  28px;
+  min-height: 100vh;
   overflow-y: auto; 
 }
 
